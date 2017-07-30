@@ -12,8 +12,8 @@
 # Usage
 
 For other mods:
-`config.engine.on('init', function () {
-    if (config.features) {
+`config.engine.on('init', function (processType) {
+    if (config.features && processType === "main") {
         config.features.defineFeature(<feature name>, <feature source, e.g. mod name>, <feature version>); // features are enabled by default when defined
     }
 });

@@ -1,6 +1,6 @@
 {
   "name": "screepsmod-features",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Provide mechanism for screeps sandbox & client to know of server features",
   "main": "index.js",
   "author": "James Cook <esryok@outlook.com>",
