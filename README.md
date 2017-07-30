@@ -1,6 +1,6 @@
 # screepsmod-features
 
-## Provides feature-management functionality to server &amp; exposes info to clients+sandbox
+Provides feature-management functionality to server and exposes info to clients+sandbox
 
 [![NPM info](https://nodei.co/npm/screepsmod-features.png?downloads=true)](https://npmjs.org/package/screepsmod-features)
 
@@ -10,33 +10,30 @@
 2. Enjoy!
 
 # Usage
+##### Other mods:
+    config.engine.on('init', function (processType) {
+        if (config.features && processType === "main") {
+            config.features.defineFeature(<feature name>, <feature source, e.g. mod name>, <feature version>); // features are enabled by default when defined
+        }
+    });
+    ...
+    config.features.getFeatureEnabled("my-feature").then((enabled) => {
+        if (enabled) {
+            // run code
+        }
+    });
 
-For other mods:
-`config.engine.on('init', function (processType) {
-    if (config.features && processType === "main") {
-        config.features.defineFeature(<feature name>, <feature source, e.g. mod name>, <feature version>); // features are enabled by default when defined
-    }
-});
-
-...
-
-config.features.getFeatureEnabled("my-feature", (enabled) => {
-    if (enabled) {
+##### User code:
+    if (Game.features['my-feature'].enabled) {
         // run code
     }
-})`
 
-For user code:
-`if (Game.features['my-feature'].enabled) {
-    // run code
-}`
+##### External tools/clients:
+    connection.get("api/features/list").then((features) => {
+        if (features['my-features'].enabled) {
+            // run code
+        }
+    })
 
-For external tools/clients:
-`connection.get("api/features/list").then((features) => {
-    if (features['my-features'].enabled) {
-        // run code
-    }
-})`
-
-For server CLI:
-`setFeatureEnabled('my-feature', <boolean>);`
+##### Server CLI:
+    setFeatureEnabled('my-feature', <boolean>);
